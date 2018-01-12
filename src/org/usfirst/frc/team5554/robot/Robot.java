@@ -66,7 +66,7 @@ public class Robot extends IterativeRobot {
 		    SmartDashboard.putNumber("port" + i + "BackButton", 0);
 		    SmartDashboard.putNumber("port" + i + "BackSpeed", 0);
 		    port[i-4] = new MechSys(i);
-		    RobotManager.AddSubsystem("port" + i, port[i]);
+		    RobotManager.AddSubsystem("port" + i, port[i-4]);
 		}
 	}
 
