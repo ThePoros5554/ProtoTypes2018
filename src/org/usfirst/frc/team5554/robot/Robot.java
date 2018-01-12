@@ -4,6 +4,8 @@ package org.usfirst.frc.team5554.robot;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import systems.RobotManager;
+import systems.subsystems.MechSys;
 
 
 /**
@@ -53,30 +55,19 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putNumber("Joy2Twist", 0);
 		SmartDashboard.putBoolean("Joy2Enabled", false);
 	
-		//PORT 5
-		 SmartDashboard.putBoolean("Port5Enabled", false);
-		 SmartDashboard.putNumber("Port5Speed", 0);
-		 SmartDashboard.putNumber("Port5Button",0 );
-		 
-		//PORT 6
-		 SmartDashboard.putBoolean("Port6Enabled", false);
-		 SmartDashboard.putNumber("Port6Speed", 0);
-		 SmartDashboard.putNumber("Port6Button",1 );
+		MechSys[] port= new  MechSys[6];
 		
-		//PORT 7
-		 SmartDashboard.putBoolean("Port7Enabled", false);
-		 SmartDashboard.putNumber("Port7Speed", 0);
-		 SmartDashboard.putNumber("Port7Button",1 );
-		 
-		//PORT 8
-		 SmartDashboard.putBoolean("Port8Enabled", false);
-		 SmartDashboard.putNumber("Port8Speed", 0);
-		 SmartDashboard.putNumber("Port8Button",1 );
-		
-	    //PORT 9
-		 SmartDashboard.putBoolean("Port9Enabled", false);
-		 SmartDashboard.putNumber("Port9Speed", 0);
-		 SmartDashboard.putNumber("Port9Button",1 );
+		for(int i = 4; i <= 9; i++)
+		{
+		//PORT 4-9
+		    SmartDashboard.putBoolean("port" + i + "Enabled", false);
+		    SmartDashboard.putNumber("port" + i + "FrontButton", 0);
+		    SmartDashboard.putNumber("port" + i + "Frontspeed", 0);
+		    SmartDashboard.putNumber("port" + i + "BackButton", 0);
+		    SmartDashboard.putNumber("port" + i + "BackSpeed", 0);
+		    port[i-4] = new MechSys(i);
+		    RobotManager.AddSubsystem("port" + i, port[i]);
+		}
 	}
 
 	/**
