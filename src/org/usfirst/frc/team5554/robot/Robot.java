@@ -44,13 +44,20 @@ public class Robot extends IterativeRobot {
 		//JOY 1 PORT 4
 		SmartDashboard.putNumber("Joy1Speed", 0);
 		SmartDashboard.putNumber("Joy1Rotate", 0);
+		SmartDashboard.putNumber("Joy1Twist", 0);
 		SmartDashboard.putBoolean("Joy1Enabled", false);
 		
 		//JOY 2 PORT 5
 		SmartDashboard.putNumber("Joy2Speed", 0);
 		SmartDashboard.putNumber("Joy2Rotate", 0);
+		SmartDashboard.putNumber("Joy2Twist", 0);
 		SmartDashboard.putBoolean("Joy2Enabled", false);
 	
+		//PORT 5
+		 SmartDashboard.putBoolean("Port5Enabled", false);
+		 SmartDashboard.putNumber("Port5Speed", 0);
+		 SmartDashboard.putNumber("Port5Button",0 );
+		 
 		//PORT 6
 		 SmartDashboard.putBoolean("Port6Enabled", false);
 		 SmartDashboard.putNumber("Port6Speed", 0);
