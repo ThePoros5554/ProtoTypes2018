@@ -26,7 +26,7 @@ public class Robot extends IterativeRobot {
 //	Button Button4;
 	Scheduler mySchedular;
 	OI oi;
-	
+	MechSys[] port;
 	@Override
 	public void robotInit() 
 	{
@@ -71,11 +71,14 @@ public class Robot extends IterativeRobot {
 //		    port[i-4] = new MechSys(i);
 //		    RobotManager.AddSubsystem("port" + i, port[i-4]);
 //		}
-		
-	    SmartDashboard.putNumber("port4FrontButton", 3);
-	    SmartDashboard.putNumber("port4Frontspeed", 0);
-	    MechSys port4 = new MechSys(4);
-	    RobotManager.AddSubsystem("port4", port4);
+		port = new MechSys[6];
+		for(int i = 4; i <=9; i++)
+		{
+	    SmartDashboard.putNumber("port" + i + "FrontButton", 3);
+	    SmartDashboard.putNumber("port" + i + "Frontspeed", 0);
+	    port[i-4] = new MechSys(i);
+	    RobotManager.AddSubsystem("port" + i, port[i-4]);
+		}
 	    RobotManager.SetDriveJoy(0);
 	    
 	    oi = new OI();

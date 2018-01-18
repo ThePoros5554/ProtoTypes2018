@@ -11,8 +11,8 @@ import systems.RobotManager;
 public class OI 
 {
 	
-	Triggery b4;
-	ActivateMechSys command;
+	Triggery[] b;
+	ActivateMechSys[] command;
 	
 	public OI()
 	{
@@ -50,37 +50,37 @@ public class OI
 //		System.out.println("Speed: " + (double) SmartDashboard.getNumber(PortFrontspeed, 0));
 	
 		
-		
+		b = new Triggery[6];
+		command = new ActivateMechSys[6];
 		SetComms();
 		
 	}
 	
 	public void SetComms()
 	{
-		if(b4 == null)
+		for(int i = 4;i <=9;i++)
 		{
-			b4 = new Triggery(RobotManager.GetDriveJoy(), (int)SmartDashboard.getNumber("port4FrontButton", 12));				
+		if(b[i-4] == null)
+		{
+			b[i-4] = new Triggery(RobotManager.GetDriveJoy(), (int)SmartDashboard.getNumber("port" + i + "FrontButton", 12));				
 		}
 		else
 		{
-			b4.SetButton((int)SmartDashboard.getNumber("port4FrontButton", 12));
+			b[i-4].SetButton((int)SmartDashboard.getNumber("port" + i + "FrontButton", 12));
 		}
 		
-		if(command == null)
+		if(command[i-4] == null)
 		{
-			command = new ActivateMechSys("port4", (double)SmartDashboard.getNumber("port4Frontspeed", 12));
-			b4.whileHeld(command);
+			command[i-4] = new ActivateMechSys("port" + i, (double)SmartDashboard.getNumber("port" + i + "Frontspeed", 12));
+			b[i-4].whileHeld(command[i-4]);
 
 		}
 		else
 		{
-			command.SetSpeed((double)SmartDashboard.getNumber("port4Frontspeed", 12));
+			command[i-4].SetSpeed((double)SmartDashboard.getNumber("port" + i + "Frontspeed", 12));
 		}
-		
+		}
 
-		
-		
-		
 	}
 
 }
